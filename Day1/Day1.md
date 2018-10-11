@@ -39,6 +39,7 @@
 本系列文只介紹 C# 基礎語法而已，所以安裝的範本是`Console Application`，輸入`dotnet new console`來安裝`console`範本，如果需要實作桌面程式或者網頁等，可再閱讀後自行建立相對應範本練習。
 
 ![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/03.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/03.png)
+
 ![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/04.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/04.png)
 
 安裝後會提醒是否要安裝 C# 擴充套件，
@@ -48,17 +49,19 @@
 請點選 Install，安裝完後 Reload 就完成初始設定了。
 
 ![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/06.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/06.png)
+
 ![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/07.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/07.png)
-
-![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/08.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/08.png)
-
-![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/09.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/09.png)
 
 然後不免俗的開始任何程式的第一步，讓程式印出`Hello World!`。
 
 點選左邊檔案總管的`Program.cs`會看到他的程式碼。
 
 對，在你建立好範本時，他已經幫你實現第一步了，這時按下 F5 就可以執行程式了，或者你也可以選取左側選單的 Debug 蟲蟲圖案後按下左上綠色箭頭(Start Debugging)，你會在 DEBUG CONSOLE 看到一堆相關訊息與`Hello World!`。
+
+
+![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/08.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/08.png)
+
+![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/09.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/09.png)
 
 ![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/10.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day1/pic/10.png)
 

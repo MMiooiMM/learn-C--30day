@@ -10,9 +10,11 @@
 
 4. 參考型別 (Reference Type) 變數儲存的內容是「參考」。使用 new 關鍵字實體化類別的物件，其物件內容是儲存在 Heap 中。Reference Type 變數中所儲存的參考，便是指向 Heap 中的記憶體起始位址。
 
-由於實值型別所存放的是「實值」，所以存放在 Stack 的時候需明確告知位元大小，所以每一個實值型別都有屬於自己的位元大小與用途。
+以下是本人所畫的，大致上可以先這樣想會比較好理解，但就算不理解也沒關係，學久了自然會懂(應該吧。
 
 ![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day2/pic/01.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day2/pic/01.png)
+
+由於實值型別所存放的是「實值」，所以存放在 Stack 的時候需明確告知位元大小，所以每一個實值型別都有屬於自己的位元大小與用途。
 
 實值型別有
 
@@ -38,7 +40,7 @@
 
 如果想看更多可以在下方參考連結觀看，就不一一介紹了。
 
-而參考型別只需存入放在 Heap 中的記憶體起始位置，而這有什麼好處呢？傳遞變數時，是以 Stack 中的值、參考複製後傳遞，所以若以實值傳遞的資料量大時，便顯得相當耗時。而以參考傳遞則免去複製其他變數內容資料，只需要位在 Heap 起始位置就可以，所以相對比較有效率。
+而參考型別只需存入放在 Heap 中的記憶體起始位置就好，這有什麼好處呢？就是我們在傳遞變數時，是以 Stack 中的值、參考複製後傳遞，所以用實值傳遞的資料量大時，便顯得相當耗時，而用參考傳遞則免去複製其他變數內容資料，只需要 Heap 的起始位置就可以，所以相對比較有效率。
 
 參考型別有
 
@@ -55,11 +57,13 @@
 
 詳細的參考型別會放在後面的內容介紹。
 
-題外話：這邊的傳值傳參考，並不是廣泛說的call by value/reference，個人認為，只是個人認為，C# 的 value type 為 call by value，而 reference type 則類似於 JS 的 call by sharing，要真正做到 call by reference 則需要使用 ref 關鍵字，僅為個人見解，也在文末附上相關文章。
+題外話：這邊的傳值傳參考，並不是廣泛說的call by value/reference，**個人認為，只是個人認為**，C# 的 value type 為 call by value，而 reference type 則類似於 JS 的 call by sharing，要真正做到 call by reference 則需要使用 ref 關鍵字，僅為個人見解，也在文末附上相關文章。
 
 ### 變數
 
 了解型別後，打開我們的 VSCode，並且開啟昨天的專案資料夾，點擊 ```Program.cs```，我們就可以來定義一個型別為 int 且變數名稱是 a 的變數。
+
+沒意外以後的操作都是在```Program.cs```裡面，往後就不在贅述。
 
 ```CSharp=
 using System;
@@ -79,7 +83,7 @@ namespace demo
 
 **切記在 C# 語法裡，語句需要有 ```分號( ; )``` 做結尾。**
 
-為了使內容整齊```Main(string[] args){...}```所包住的東西我們先稱為 Main 函式，而```Console.WriteLine("Hello World!")```是一個將內容顯示在 console 的方法，會在之後說明方法與函式以及它的作用域，而後面的程式碼為 Main 函式的內容。
+為了使內容整齊```Main(string[] args){...}```所包住的東西我們先稱為 Main 函式，而```Console.WriteLine("Hello World!")```是一個將內容顯示在 console 的函式，會在之後說明函式與方法以及它的作用域，而後面的程式碼為 Main 函式的內容。
 
 接著我們可以對變數 a 進行賦值行為，給予他一個實值內容，並且將 Hello World! 替換成 a。
 
@@ -96,7 +100,7 @@ int a = 10;
 Console.WriteLine(a);
 ```
 
-你會發現本來顯示在 DEBUG CONSOLE 的 ```Hello World!``` 變成了 ```10``` 這樣我們就學會了產生一個變數並且使用第一個方法```Console.WriteLine(a)```了。
+你會發現本來顯示在 DEBUG CONSOLE 的 ```Hello World!``` 變成了 ```10``` 這樣我們就學會了產生一個變數並且使用第一個函式```Console.WriteLine(a)```了。
 
 你也可以一次定義很多的相同型別的變數，只要使用逗號(,)區隔就可以。
 
@@ -128,6 +132,8 @@ int $i123;//無法。特殊符號只能是底線。
 但你也不用擔心錯誤的命名，因為 IDE 會在你開發時檢查有的沒的，你會看到錯誤的命名下有出現紅色底線，告知你編寫錯誤。
 
 而對於變數的命名，希望在學習時便能開始自我要求，有興趣的可以閱讀下面參考連結的文章。
+
+雖然本篇寫的很長，但只要能知道如何定義一個變數就可以接著看下去了，不懂的地方以後慢慢了解就好。
 
 參考連結
 [C# 型別和變數 - C# 語言教學課程 | Microsoft Docs]

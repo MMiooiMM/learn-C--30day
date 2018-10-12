@@ -1,0 +1,141 @@
+### 型別
+
+再介紹型別前，首先分享幾個觀念
+
+1. C# 會將記憶體分為兩大用途︰Stack 與 Heap。
+
+2. C# 中所有的變數 (不管是實值型別或是參考型別)，其內容 (變數名稱、型別與值) 都是儲存在 Stack 中。
+
+3. 實值型別 (Value Type) 變數儲存的內容是「實值」。
+
+4. 參考型別 (Reference Type) 變數儲存的內容是「參考」。使用 new 關鍵字實體化類別的物件，其物件內容是儲存在 Heap 中。Reference Type 變數中所儲存的參考，便是指向 Heap 中的記憶體起始位址。
+
+由於實值型別所存放的是「實值」，所以存放在 Stack 的時候需明確告知位元大小，所以每一個實值型別都有屬於自己的位元大小與用途。
+
+![https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day2/pic/01.png](https://raw.githubusercontent.com/MMiooiMM/learn-csharp-30days/master/Day2/pic/01.png)
+
+實值型別有
+
+* 簡單型別
+  * 帶正負號的整數︰sbyte、short、int、long
+  * 不帶正負號的整數︰byte、ushort、uint、ulong
+  * Unicode 字元：char
+  * IEEE 浮點數：float、double
+  * 高精確度十進位︰decimal
+  * 布林值：bool
+* 列舉型別
+  * 使用者定義型別，格式為 enum E {...}
+* 結構型別
+  * 使用者定義型別，格式為 struct S {...}
+* 可為 Null 的實值型別
+  * 含有 null 值的所有其他數值型別的擴充
+
+簡單的描述幾個簡單型別：
+
+* 如果要做整數運算時可以使用 int，int 存放的內容是 32 位元，用途是存取 -2,147,483,648 到 2,147,483,647 之間的數值。
+* 如果需要帶有小數點的浮點數運算時可以使用 float，float 存放的內容是 32 位元，用途是存取 1.5 × 10-45 到 3.4 × 1038 之間，有 7 位數精確度。
+* 如果是做真假判斷的話可以使用 bool，bool 存放的內容只有 true 表示真與 false 表示假，在介紹條件判斷時會有更明確的描述。
+
+如果想看更多可以在下方參考連結觀看，就不一一介紹了。
+
+而參考型別只需存入放在 Heap 中的記憶體起始位置，而這有什麼好處呢？傳遞變數時，是以 Stack 中的值、參考複製後傳遞，所以若以實值傳遞的資料量大時，便顯得相當耗時。而以參考傳遞則免去複製其他變數內容資料，只需要位在 Heap 起始位置就可以，所以相對比較有效率。
+
+參考型別有
+
+* 類別型別
+  * 所有其他型別的基底類別︰object
+  * Unicode 字串：string
+  * 使用者定義型別，格式為 class C {...}
+* 介面型別
+  * 使用者定義型別，格式為 interface I {...}
+* 陣列型別
+  * 單一維度和多維度，例如 int[] 和 int[,]
+* 委派型別
+  * 使用者定義型別，格式為 delegate int D(...)
+
+詳細的參考型別會放在後面的內容介紹。
+
+題外話：這邊的傳值傳參考，並不是廣泛說的call by value/reference，個人認為，只是個人認為，C# 的 value type 為 call by value，而 reference type 則類似於 JS 的 call by sharing，要真正做到 call by reference 則需要使用 ref 關鍵字，僅為個人見解，也在文末附上相關文章。
+
+### 變數
+
+了解型別後，打開我們的 VSCode，並且開啟昨天的專案資料夾，點擊 ```Program.cs```，我們就可以來定義一個型別為 int 且變數名稱是 a 的變數。
+
+```CSharp=
+using System;
+
+namespace demo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int a;
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+```
+
+**切記在 C# 語法裡，語句需要有 ```分號( ; )``` 做結尾。**
+
+為了使內容整齊```Main(string[] args){...}```所包住的東西我們先稱為 Main 函式，而```Console.WriteLine("Hello World!")```是一個將內容顯示在 console 的方法，會在之後說明方法與函式以及它的作用域，而後面的程式碼為 Main 函式的內容。
+
+接著我們可以對變數 a 進行賦值行為，給予他一個實值內容，並且將 Hello World! 替換成 a。
+
+```CSharp=
+int a;
+a = 10;
+Console.WriteLine(a);
+```
+
+或者也可以在定義變數時賦值如
+
+```CSharp=
+int a = 10;
+Console.WriteLine(a);
+```
+
+你會發現本來顯示在 DEBUG CONSOLE 的 ```Hello World!``` 變成了 ```10``` 這樣我們就學會了產生一個變數並且使用第一個方法```Console.WriteLine(a)```了。
+
+你也可以一次定義很多的相同型別的變數，只要使用逗號(,)區隔就可以。
+
+```csharp=
+int a, b;
+```
+
+```csharp=
+int a = 1, b = 2;
+```
+
+變數名稱限制只有
+
+1. 開頭只能是英文、底線(\_)或者不建議的中文。
+2. 之後才可以加入數字。
+3. 不能使用關鍵字(如 int)，除非在關鍵字前面加上@符號(如 @int)。
+
+範例：
+
+```csharp=
+int i123; //可以。
+int 123i; //無法。不能以數字開頭。
+int _123i;//可以。
+int int;  //無法。int 為關鍵字。
+int @int; //可以。但不建議這樣命名。
+int $i123;//無法。特殊符號只能是底線。
+```
+
+但你也不用擔心錯誤的命名，因為 IDE 會在你開發時檢查有的沒的，你會看到錯誤的命名下有出現紅色底線，告知你編寫錯誤。
+
+而對於變數的命名，希望在學習時便能開始自我要求，有興趣的可以閱讀下面參考連結的文章。
+
+參考連結
+[C# 型別和變數 - C# 語言教學課程 | Microsoft Docs]
+[C#常用的命名規則彙總 - 掃文資訊]
+[\[C#\]\[C# IN DEPTH筆記\]\[004\] 數值型別與參考型別 | 簡單就是美 :: { 簡單其實很不簡單 } - 點部落]
+[深入探討 JavaScript 中的參數傳遞：call by value 還是 reference？ | TechBridge 技術共筆部落格]
+
+[C# 型別和變數 - C# 語言教學課程 | Microsoft Docs]: https://docs.microsoft.com/zh-tw/dotnet/csharp/tour-of-csharp/types-and-variables
+[C#常用的命名規則彙總 - 掃文資訊]: https://hk.saowen.com/a/564a774a2ce8c7b4c7197cc11bbca401a40db9d53b6442b9ed523b1c20e1b6f1
+[\[C#\]\[C# IN DEPTH筆記\]\[004\] 數值型別與參考型別 | 簡單就是美 :: { 簡單其實很不簡單 } - 點部落]: https://dotblogs.com.tw/davis/2009/12/30/12737
+[深入探討 JavaScript 中的參數傳遞：call by value 還是 reference？ | TechBridge 技術共筆部落格]: https://blog.techbridge.cc/2018/06/23/javascript-call-by-value-or-reference/
